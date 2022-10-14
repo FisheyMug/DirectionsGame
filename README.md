@@ -1,0 +1,2 @@
+This is my first attempt at a basic directions game.
+My hope is that I will be able to use this game to practice "where is the ____?" "Go straight, turn right, turn left" etc. in Elementary school English class.
