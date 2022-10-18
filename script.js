@@ -3,22 +3,27 @@ let ctx = canvas.getContext("2d");
 let img= new Image();
 img.src = 'https://opengameart.org/sites/default/files/Green-Cap-Character-16x18.png';
 // variables for moving
-let spriteY = 457;
-let spriteX = 307;
+let spriteY = 430;
+let spriteX = 305;
 let faceDirection = 0;
 let goal = 1;
 let round = 1;
+let speed = 100;
 
 // variables for building coordinates
-const schoolX= 65;
-const schoolX2 = 288;
-const schoolY= 65;
-const schoolY2=206;
+const leftBuildingX= 65;
+const leftBuildingX2 = 285;
+const topBuildingY= 65;
+const topBuildingY2=206;
 
-const postOfficeX = 352;
-const postOfficeX2= 542;
-const postOfficeY= 65;
-const postOfficeY2= 206;
+const middleBuildingX = 352;
+const middleBuildingX2= 542;
+
+const rightBuildingX = 607;
+const rightBuildingX2 = 836;
+
+const bottomBuildingY = 272;
+const bottomBuildingY2 = 425;
 
 const straightBtn = document.querySelector('#straight');
 const rightBtn = document.querySelector('#right');
@@ -99,19 +104,19 @@ function move (direction) {
     if (direction == straight) {
         if (faceDirection == 0) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawFrame (0, 1, spriteX, spriteY-=50)
+            drawFrame (0, 1, spriteX, spriteY-=speed)
         }
         else if (faceDirection == 1) {
            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawFrame (0, 3, spriteX+= 50, spriteY) 
+            drawFrame (0, 3, spriteX+= speed, spriteY) 
         }
         else if (faceDirection == 2) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawFrame (0, 0, spriteX, spriteY+=50)
+        drawFrame (0, 0, spriteX, spriteY+=speed)
         }
         else if (faceDirection == 3) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawFrame (0, 2, spriteX-=50, spriteY)
+        drawFrame (0, 2, spriteX-=speed, spriteY)
         }
     }    
 
@@ -171,25 +176,25 @@ function move (direction) {
 function borderDetection() {
     if (spriteX <= 0) {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 2, spriteX+=50, spriteY)
+        drawFrame (0, 2, spriteX=25, spriteY)
     }
     if (spriteX >= canvas.width) {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 3, spriteX-=50, spriteY)
+        drawFrame (0, 3, spriteX=canvas.width-50, spriteY)
     }
     if (spriteY <= 0) {
        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 1, spriteX, spriteY+=50)
+        drawFrame (0, 1, spriteX, spriteY= 25)
     }
     if (spriteY >= canvas.height) {
        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 0, spriteX, spriteY-=50) 
+        drawFrame (0, 0, spriteX, spriteY=460) 
     }
 };
 
 function reset() {
-    spriteY = 457;
-    spriteX = 307;
+    spriteY = 430;
+    spriteX = 305;
     faceDirection = 0;
     if (goal == 1) {
         goal = 2;
@@ -206,29 +211,56 @@ function reset() {
 //https://yonatankra.com/how-to-write-a-simple-collision-detector-in-html5-canvas-and-javascript/
 // building detection
 function buildingDetection() {
-    const overlapX= ((spriteX<=postOfficeX && spriteX >=postOfficeX2) || (spriteX+16<=postOfficeX2 && spriteX+16 >= postOfficeX));
-    const overlapY= ((spriteY <=postOfficeY2 && spriteY >= postOfficeY) || (spriteY+18<= postOfficeY2 && spriteY+18 >=postOfficeY));
-    if (overlapX && overlapY) {
-        if (goal==1) {
-            win()
-        } else reset();
-    } 
-
-    const schoolOverlapX= ((spriteX<=schoolX2 && spriteX >=schoolX) || (spriteX+16<=schoolX2 && spriteX+16 >= schoolX));
-    const schoolOverlapY = ((spriteY <=schoolY2 && spriteY >= schoolY) || (spriteY+18<= schoolY2 && spriteY+18 >=schoolY));
+    const schoolOverlapX= ((spriteX<=leftBuildingX2 && spriteX >=leftBuildingX) || (spriteX+16<=leftBuildingX2 && spriteX+16 >= leftBuildingX));
+    const schoolOverlapY = ((spriteY <=topBuildingY2 && spriteY >= topBuildingY) || (spriteY+18<= topBuildingY2 && spriteY+18 >=topBuildingY));
     if (schoolOverlapX && schoolOverlapY) {
        if (goal==2) {
            win()
        }  else reset()
     }
 
-    const b3OverlapX = ((spriteX<=590 && spriteX >=510) || (spriteX+16<=590 && spriteX+16 >= 510))
-    const b3OverlapY = ((spriteY <=120 && spriteY >= 0) || (spriteY+18<= 120 && spriteY+18 >=0));
-    if (b3OverlapX && b3OverlapY) {
+    const overlapX= ((spriteX<=middleBuildingX && spriteX >=middleBuildingX2) || (spriteX+16<=middleBuildingX2 && spriteX+16 >= middleBuildingX));
+    const overlapY= ((spriteY <=topBuildingY2 && spriteY >=topBuildingY) || (spriteY+18<=topBuildingY2 && spriteY+18 >=topBuildingY));
+    if (overlapX && overlapY) {
+        if (goal==1) {
+            win()
+        } else reset();
+    } 
+    
+
+    const policeOverlapX = ((spriteX<=rightBuildingX2 && spriteX >=rightBuildingX) || (spriteX+16<=rightBuildingX2 && spriteX+16 >= rightBuildingX))
+    const policeOverlapY = ((spriteY <=topBuildingY2 && spriteY >= topBuildingY) || (spriteY+18<= topBuildingY2 && spriteY+18 >=topBuildingY));
+    if (policeOverlapX && policeOverlapY) {
         if (goal==3) {
             win()
         } else reset()
     }
+
+    const parkOverlapX = ((spriteX<=leftBuildingX2 && spriteX >= leftBuildingX) || (spriteX+16<=leftBuildingX2 && spriteX+16 >= leftBuildingX))
+    const parkOverlapY = ((spriteY <=bottomBuildingY2 && spriteY >= bottomBuildingY) || (spriteY+18<= bottomBuildingY2 && spriteY+18 >=bottomBuildingY));
+    if (parkOverlapX && parkOverlapY) {
+        if (goal==4) {
+            win()
+        } else reset()
+    }
+
+    const superMarketOverlapX= ((spriteX<=middleBuildingX2 && spriteX>=middleBuildingX) || (spriteX+16<=middleBuildingX2 && spriteX+16>= middleBuildingX));
+    const superMarketOverlapY= ((spriteY<=bottomBuildingY2 && spriteY>= bottomBuildingY) || (spriteY+18<=bottomBuildingY2 && spriteY+18>=bottomBuildingY));
+    if (superMarketOverlapX && superMarketOverlapY) {
+        if (goal==5) {
+            win()
+        } else reset()
+    }
+
+    const hospitalOverlapX = ((spriteX<=rightBuildingX2 && spriteX>= rightBuildingX) || (spriteX+16 <=rightBuildingX2 && spriteX+16>= rightBuildingX));
+    const hospitalOverlapY = ((spriteY<=bottomBuildingY2 && spriteY>= bottomBuildingY) || (spriteY+18<=bottomBuildingY2 && spriteY+18>=bottomBuildingY));
+    if (hospitalOverlapX && hospitalOverlapY) {
+        if (goal == 6) {
+            win()
+        } else reset()
+    };
+
+
 };
 
 //click to select goal
