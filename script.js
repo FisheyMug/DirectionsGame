@@ -65,21 +65,6 @@ const getCursorPosition = (canvas, event) => {
     console.log(x, y)
   }
 
-//changes mouse style so we know it is clickable
-function buildingHover(canvas, event) {
-    const x = event.offsetX
-    const y = event.offsetY
-    const overlapX= ((x<=150 && x >=15) || (x+16<=150 && x+16 >= 15));
-    const overlapY= ((y <=120 && y >= 0) || (y+18<= 120 && y+18 >=0));
-    if (overlapX && overlapY) {
-        canvas.style="cursor: pointer;"   
-    }  else  canvas.style="cursor: cursor;" 
-}
-
-canvas.addEventListener('mousedown', (e) => {
-  getCursorPosition(canvas, e)
-  buildingSelect(canvas, e)
-})
 
 ///// start of the game functions
 
@@ -262,6 +247,47 @@ function buildingDetection() {
 
 
 };
+
+//changes mouse style so we know it is clickable
+function buildingHover(canvas, event) {
+    const x = event.offsetX
+    const y = event.offsetY
+    const schoolOverlapX= ((x<=leftBuildingX2 && x >=leftBuildingX) || (x<=leftBuildingX2 && x>= leftBuildingX));
+    const schoolOverlapY = ((y <=topBuildingY2 && y >= topBuildingY) || (y<= topBuildingY2 && y>=topBuildingY));
+    const overlapX= ((x<=middleBuildingX && x >=middleBuildingX2) || (x<=middleBuildingX2 && x>= middleBuildingX));
+    const overlapY= ((y <=topBuildingY2 && y >=topBuildingY) || (y<=topBuildingY2 && y>=topBuildingY));
+    const policeOverlapX = ((x<=rightBuildingX2 && x >=rightBuildingX) || (x<=rightBuildingX2 && x>= rightBuildingX))
+    const policeOverlapY = ((y <=topBuildingY2 && y >= topBuildingY) || (y<= topBuildingY2 && y>=topBuildingY));
+    const parkOverlapX = ((x<=leftBuildingX2 && x >= leftBuildingX) || (x<=leftBuildingX2 && x >= leftBuildingX))
+    const parkOverlapY = ((y <=bottomBuildingY2 && y >= bottomBuildingY) || (y<= bottomBuildingY2 && y>=bottomBuildingY));
+    const superMarketOverlapX= ((x<=middleBuildingX2 && x>=middleBuildingX) || (x<=middleBuildingX2 && x>= middleBuildingX));
+    const superMarketOverlapY= ((y<=bottomBuildingY2 && y>= bottomBuildingY) || (y<=bottomBuildingY2 && y>=bottomBuildingY));
+    const hospitalOverlapX = ((x<=rightBuildingX2 && x>= rightBuildingX) || (x<=rightBuildingX2 && x>= rightBuildingX));
+    const hospitalOverlapY = ((y<=bottomBuildingY2 && y>= bottomBuildingY) || (y<=bottomBuildingY2 && y>=bottomBuildingY));
+    
+
+    if (schoolOverlapX && schoolOverlapY) {
+        canvas.style="cursor: pointer;"   
+    }
+    else if (overlapX && overlapY) {
+        canvas.style="cursor: pointer;"   
+    }  
+    else if (policeOverlapX && policeOverlapY) {
+        canvas.style="cursor: pointer;" 
+    }
+    else if (parkOverlapX && parkOverlapY) {
+        canvas.style="cursor: pointer;" 
+    }
+    else if (superMarketOverlapX && superMarketOverlapY) {
+        canvas.style="cursor: pointer;" 
+    }
+    else if(hospitalOverlapX && hospitalOverlapY) {
+        canvas.style="cursor: pointer;" 
+    } else canvas.style="cursor: cursor;" ;
+    
+};
+
+
 
 //click to select goal
 function buildingSelect(canvas, event) {
