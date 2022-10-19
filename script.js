@@ -85,6 +85,10 @@ function drawFrame (frameX, frameY, canvasX, canvasY) {
 }
 
 function move (direction) {
+    //variable speed
+    if (faceDirection == 1 || faceDirection == 3) {
+        speed= 60;
+    } else speed = 100;
     //straight
     if (direction == straight) {
         if (faceDirection == 0) {
@@ -153,7 +157,6 @@ function move (direction) {
         }
     }
     borderDetection()
-    //drawBuildings();
     buildingDetection();
 };
 
@@ -178,19 +181,25 @@ function borderDetection() {
 };
 
 function reset() {
-    spriteY = 430;
-    spriteX = 305;
-    faceDirection = 0;
-    if (goal == 1) {
-        goal = 2;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (round==1) {
+        spriteY = 430;
+        spriteX = 305;
+        faceDirection = 0;
+        drawFrame (0, 1, spriteX, spriteY);
     }
-    else if (goal ==2) {
-        goal = 3;
+    else if (round==2) {
+        spriteY = 223;
+        spriteX = 853;
+        faceDirection = 3;
+        drawFrame (0, 2, spriteX, spriteY)
+    } else {
+        spriteY = 430;
+        spriteX = 305;
+        faceDirection = 0;
+        drawFrame (0, 1, spriteX, spriteY)
     }
-     else if (goal == 3) {
-        goal=1
-    };
-    init();
+
 };
 
 //https://yonatankra.com/how-to-write-a-simple-collision-detector-in-html5-canvas-and-javascript/
@@ -356,7 +365,10 @@ function drawStar(cx,cy,spikes,outerRadius,innerRadius){
   
   function win() {
     round +=1;
-    reset();
-    drawStar(90,70,5,30,15);
+    if (round > 12) {
+        round = 1
+    };
+    drawStar(447,270,5,250,125);
+    setTimeout(()=>{reset()},3000)
   }
   
