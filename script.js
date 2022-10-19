@@ -187,13 +187,64 @@ function reset() {
         spriteX = 305;
         faceDirection = 0;
         drawFrame (0, 1, spriteX, spriteY);
-    }
-    else if (round==2) {
+    } else if (round==2) {
         spriteY = 223;
         spriteX = 853;
         faceDirection = 3;
         drawFrame (0, 2, spriteX, spriteY)
-    } else {
+    } else if (round == 3) {
+        spriteX = 301;
+        spriteY = 22;
+        faceDirection= 2;
+        drawFrame (0, 0, spriteX, spriteY)
+    } else if (round==4) {
+        spriteX= 303;
+        spriteY=220
+        faceDirection=0;
+        drawFrame (0, 1, spriteX, spriteY);
+    } else if (round==5) {
+        spriteX=853
+        spriteY=22
+        faceDirection = 3;
+        drawFrame (0, 2, spriteX, spriteY)
+    } else if (round == 6) {
+        spriteX=20
+        spriteY=20
+        faceDirection = 2;
+        drawFrame (0, 0, spriteX, spriteY)
+    } else if (round == 7) {
+        spriteX=557
+        spriteY=223
+        faceDirection = 3;
+        drawFrame (0, 2, spriteX, spriteY)
+    } else if (round==8) {
+        spriteX=853
+        spriteY=430
+        faceDirection = 0;
+        drawFrame (0, 1, spriteX, spriteY)
+    } else if (round==9) {
+        spriteX=560
+        spriteY=430
+        faceDirection = 3;
+        drawFrame (0, 2, spriteX, spriteY)
+    } else if (round==10) {
+        spriteX=16
+        spriteY=430
+        faceDirection = 1;
+        drawFrame (0, 3, spriteX, spriteY)
+    } else if (round == 11) {
+        spriteX=560
+        spriteY=22
+        faceDirection = 3;
+        drawFrame (0, 2, spriteX, spriteY)
+    } else if (round == 12) {
+        spriteX=20
+        spriteY=224
+        faceDirection = 1;
+        drawFrame (0, 3, spriteX, spriteY)
+    }
+    
+    else {
         spriteY = 430;
         spriteX = 305;
         faceDirection = 0;
