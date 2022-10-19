@@ -199,7 +199,7 @@ function buildingDetection() {
     const schoolOverlapX= ((spriteX<=leftBuildingX2 && spriteX >=leftBuildingX) || (spriteX+16<=leftBuildingX2 && spriteX+16 >= leftBuildingX));
     const schoolOverlapY = ((spriteY <=topBuildingY2 && spriteY >= topBuildingY) || (spriteY+18<= topBuildingY2 && spriteY+18 >=topBuildingY));
     if (schoolOverlapX && schoolOverlapY) {
-       if (goal==2) {
+       if (goal==1) {
            win()
        }  else reset()
     }
@@ -207,7 +207,7 @@ function buildingDetection() {
     const overlapX= ((spriteX<=middleBuildingX && spriteX >=middleBuildingX2) || (spriteX+16<=middleBuildingX2 && spriteX+16 >= middleBuildingX));
     const overlapY= ((spriteY <=topBuildingY2 && spriteY >=topBuildingY) || (spriteY+18<=topBuildingY2 && spriteY+18 >=topBuildingY));
     if (overlapX && overlapY) {
-        if (goal==1) {
+        if (goal==2) {
             win()
         } else reset();
     } 
@@ -291,14 +291,41 @@ function buildingHover(canvas, event) {
 
 //click to select goal
 function buildingSelect(canvas, event) {
+    reset();
     const x = event.offsetX
     const y = event.offsetY
-    const overlapX= ((x<=150 && x >=15) || (x+16<=150 && x+16 >= 15));
-    const overlapY= ((y <=120 && y >= 0) || (y+18<= 120 && y+18 >=0));
+    const schoolOverlapX= ((x<=leftBuildingX2 && x >=leftBuildingX) || (x<=leftBuildingX2 && x>= leftBuildingX));
+    const schoolOverlapY = ((y <=topBuildingY2 && y >= topBuildingY) || (y<= topBuildingY2 && y>=topBuildingY));
+    const overlapX= ((x<=middleBuildingX && x >=middleBuildingX2) || (x<=middleBuildingX2 && x>= middleBuildingX));
+    const overlapY= ((y <=topBuildingY2 && y >=topBuildingY) || (y<=topBuildingY2 && y>=topBuildingY));
+    const policeOverlapX = ((x<=rightBuildingX2 && x >=rightBuildingX) || (x<=rightBuildingX2 && x>= rightBuildingX))
+    const policeOverlapY = ((y <=topBuildingY2 && y >= topBuildingY) || (y<= topBuildingY2 && y>=topBuildingY));
+    const parkOverlapX = ((x<=leftBuildingX2 && x >= leftBuildingX) || (x<=leftBuildingX2 && x >= leftBuildingX))
+    const parkOverlapY = ((y <=bottomBuildingY2 && y >= bottomBuildingY) || (y<= bottomBuildingY2 && y>=bottomBuildingY));
+    const superMarketOverlapX= ((x<=middleBuildingX2 && x>=middleBuildingX) || (x<=middleBuildingX2 && x>= middleBuildingX));
+    const superMarketOverlapY= ((y<=bottomBuildingY2 && y>= bottomBuildingY) || (y<=bottomBuildingY2 && y>=bottomBuildingY));
+    const hospitalOverlapX = ((x<=rightBuildingX2 && x>= rightBuildingX) || (x<=rightBuildingX2 && x>= rightBuildingX));
+    const hospitalOverlapY = ((y<=bottomBuildingY2 && y>= bottomBuildingY) || (y<=bottomBuildingY2 && y>=bottomBuildingY));
+    
     if (overlapX && overlapY) {
-      goal=1  
+      goal=2
     }   
-}
+    else if (schoolOverlapX && schoolOverlapY) {
+        goal = 1
+    }
+    else if (policeOverlapX && policeOverlapY) {
+        goal=3
+    }
+    else if (parkOverlapX && parkOverlapY) {
+        goal=4
+    }
+    else if (superMarketOverlapX && superMarketOverlapY) {
+        goal= 5
+    }
+    else if (hospitalOverlapX && hospitalOverlapY) {
+        goal=6
+    }
+};
 
 function drawStar(cx,cy,spikes,outerRadius,innerRadius){
     var rot=Math.PI/2*3;
