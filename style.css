@@ -28,7 +28,7 @@ button {
     margin: 10px;
     text-align: center;
     padding: 20px 43px;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: bold;
 }
 
@@ -40,7 +40,7 @@ button {
 
 #straight {
     padding: 35px 35px;
-    font-size: 50px;
+    font-size: 45px;
     font-weight: bold;
     align-self: center;
 }
@@ -49,6 +49,19 @@ button {
     display: flex;
     flex-wrap: wrap;
     border: 2px solid yellow;
+    
+}
+
+#rightPanel {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sentance {
+    flex-grow: 1;
+    border: 2px solid purple;
+    padding: 15px;
+    font-size: 30px;
 }
 
 
