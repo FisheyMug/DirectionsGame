@@ -1,13 +1,15 @@
+html{
+    background-color: grey;
+}
+
 #container {
     border: 2px solid green;
     display: flex;
-    justify-content: left;
     align-items: center;
     position: relative;
 }
 
 #map {
-    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,15 +22,14 @@ img {
 }
 
 #canvas {
-    border: 2px solid red;
     z-index: 2;
 }
 
 button {
     margin: 10px;
     text-align: center;
-    padding: 20px 43px;
-    font-size: 40px;
+    padding: 0px 25px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -38,30 +39,41 @@ button {
     flex-grow: 1;
 }
 
+#leftRightBox {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
 #straight {
-    padding: 35px 35px;
-    font-size: 45px;
+    padding: 5px 15px ;
+    font-size: 35px;
     font-weight: bold;
     align-self: center;
 }
+
 
 #buttonBox {
     display: flex;
     flex-wrap: wrap;
     border: 2px solid yellow;
-    
+    margin-bottom: 0;
 }
 
 #rightPanel {
     display: flex;
     flex-wrap: wrap;
+    height: 500px;
+    justify-content: space-between;
 }
 
 #sentance {
+    display: flex;
     flex-grow: 1;
     border: 2px solid purple;
     padding: 15px;
     font-size: 30px;
+    justify-content: space-evenly;
 }
 
 

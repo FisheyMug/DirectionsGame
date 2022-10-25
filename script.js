@@ -9,6 +9,7 @@ let faceDirection = 0;
 let goal = 1;
 let round = 1;
 let speed = 100;
+let sentanceBox = document.getElementById("sentance")
 
 // variables for building coordinates
 const leftBuildingX= 65;
@@ -35,7 +36,7 @@ const height = 18;
 const scaledWidth = scale * width;
 const scaledHeight = scale * height;
 
-//event listeners for buttons
+//event listeners for buttons and keys
 straightBtn.addEventListener("click", () => {
     move(straight)});
 rightBtn.addEventListener("click", () => {
@@ -44,7 +45,17 @@ rightBtn.addEventListener("click", () => {
 leftBtn.addEventListener("click", () => {
   move(left)
 });
-
+document.addEventListener("keydown", function(event){
+    if(event.key === "ArrowUp"){
+      move(straight);
+    }
+    else if (event.key === "ArrowLeft") {
+        move(left)
+    }
+    else if (event.key === "ArrowRight") {
+        move(right)
+    }
+  });
 
 //event listeners for canvas
 canvas.addEventListener('mousemove', (e) => {
@@ -70,6 +81,7 @@ const getCursorPosition = (canvas, event) => {
 
   img.onload = function() {
     init();
+    sentance();
 };
 
 function init() {
@@ -158,6 +170,7 @@ function move (direction) {
     }
     borderDetection()
     buildingDetection();
+    sentance();
 };
 
 //collision detection/ border edge reset
@@ -351,7 +364,6 @@ function buildingHover(canvas, event) {
 
 //click to select goal
 function buildingSelect(canvas, event) {
-    reset();
     const x = event.offsetX
     const y = event.offsetY
     const schoolOverlapX= ((x<=leftBuildingX2 && x >=leftBuildingX) || (x<=leftBuildingX2 && x>= leftBuildingX));
@@ -385,6 +397,7 @@ function buildingSelect(canvas, event) {
     else if (hospitalOverlapX && hospitalOverlapY) {
         goal=6
     }
+    sentance();
 };
 
 function drawStar(cx,cy,spikes,outerRadius,innerRadius){
@@ -419,7 +432,30 @@ function drawStar(cx,cy,spikes,outerRadius,innerRadius){
     if (round > 12) {
         round = 1
     };
+    goal +=1;
+    if (goal > 6) {
+        goal = 1
+    };
     drawStar(447,270,5,250,125);
     setTimeout(()=>{reset()},3000)
   }
   
+  function sentance() {
+    if (goal == 1) {
+        sentanceBox.innerHTML = "Where is the School?"
+    }
+    else if (goal == 2) {
+        sentanceBox.innerHTML="Where is the Post Office?"
+    } else if (goal == 3) {
+        sentanceBox.innerHTML="Where is the Police Station?"
+    }
+    else if (goal == 4) {
+        sentanceBox.innerHTML="Where is the Park?"
+    }
+    else if (goal == 5) {
+        sentanceBox.innerHTML="Where is the Supermarket?"
+    }
+    else if (goal== 6) {
+        sentanceBox.innerHTML="Where is the Hospital?"
+    }
+  };
