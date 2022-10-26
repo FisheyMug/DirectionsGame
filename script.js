@@ -2,6 +2,7 @@ let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let img= new Image();
 img.src = 'https://opengameart.org/sites/default/files/Green-Cap-Character-16x18.png';
+let player=1;
 // variables for moving
 let spriteY = 430;
 let spriteX = 305;
@@ -29,7 +30,7 @@ const bottomBuildingY2 = 425;
 const straightBtn = document.querySelector('#straight');
 const rightBtn = document.querySelector('#right');
 const leftBtn = document.querySelector('#left');
-let sentanceBox = document.getElementById("sentance")
+const sentanceBox = document.getElementById("sentance")
 
 // variables for animation scaling/maths
 const scale = 2;
@@ -383,21 +384,27 @@ function buildingSelect(canvas, event) {
     
     if (overlapX && overlapY) {
       goal=2
+      player=2;
     }   
     else if (schoolOverlapX && schoolOverlapY) {
         goal = 1
+        player=2;
     }
     else if (policeOverlapX && policeOverlapY) {
         goal=3
+        player=2;
     }
     else if (parkOverlapX && parkOverlapY) {
         goal=4
+        player=2;
     }
     else if (superMarketOverlapX && superMarketOverlapY) {
         goal= 5
+        player=2;
     }
     else if (hospitalOverlapX && hospitalOverlapY) {
         goal=6
+        player=2;
     }
     sentance();
 };
@@ -440,24 +447,30 @@ function drawStar(cx,cy,spikes,outerRadius,innerRadius){
     };
     drawStar(447,270,5,250,125);
     setTimeout(()=>{reset()},3000)
+    player=1;
   }
   
   function sentance() {
-    if (goal == 1) {
-        sentanceBox.innerHTML = "Where is the School?"
+    if (player==1) {
+        if (goal == 1) {
+            sentanceBox.innerHTML = "Where is the School?"
+        }
+        else if (goal == 2) {
+            sentanceBox.innerHTML="Where is the Post Office?"
+        } else if (goal == 3) {
+            sentanceBox.innerHTML="Where is the Police Station?"
+        }
+        else if (goal == 4) {
+            sentanceBox.innerHTML="Where is the Park?"
+        }
+        else if (goal == 5) {
+            sentanceBox.innerHTML="Where is the Supermarket?"
+        }
+        else if (goal== 6) {
+            sentanceBox.innerHTML="Where is the Hospital?"
+        }    
     }
-    else if (goal == 2) {
-        sentanceBox.innerHTML="Where is the Post Office?"
-    } else if (goal == 3) {
-        sentanceBox.innerHTML="Where is the Police Station?"
-    }
-    else if (goal == 4) {
-        sentanceBox.innerHTML="Where is the Park?"
-    }
-    else if (goal == 5) {
-        sentanceBox.innerHTML="Where is the Supermarket?"
-    }
-    else if (goal== 6) {
-        sentanceBox.innerHTML="Where is the Hospital?"
+    else if (player==2) {
+        sentanceBox.innerHTML= "Where is the ______?"
     }
   };
