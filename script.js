@@ -9,7 +9,7 @@ let faceDirection = 0;
 let goal = 1;
 let round = 1;
 let speed = 100;
-let sentanceBox = document.getElementById("sentance")
+
 
 // variables for building coordinates
 const leftBuildingX= 65;
@@ -29,6 +29,8 @@ const bottomBuildingY2 = 425;
 const straightBtn = document.querySelector('#straight');
 const rightBtn = document.querySelector('#right');
 const leftBtn = document.querySelector('#left');
+let sentanceBox = document.getElementById("sentance")
+
 // variables for animation scaling/maths
 const scale = 2;
 const width = 16;
