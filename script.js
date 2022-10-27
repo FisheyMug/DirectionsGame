@@ -82,7 +82,7 @@ const getCursorPosition = (canvas, event) => {
 
 ///// start of the game functions
 
-  img.onload = function() {
+  window.onload = function() {
     init();
     sentance();
 };
