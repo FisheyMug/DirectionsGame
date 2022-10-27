@@ -1,7 +1,7 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let img= new Image();
-img.src = "Green-Cap-Character-16x18.png";
+img.src = "sprite.png";
 let player=1;
 // variables for moving
 let spriteY = 430;
