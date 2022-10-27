@@ -1,7 +1,14 @@
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let img= new Image();
-img.src = "sprite.png";
+img.src = "sprite.png"; 
+// Encountered stange bug when it came time to draw this image to the canvas once hosted. 
+//At first I thought changing the location to local image file, then to local project file fixed it, 
+//but the next day I had the same problem. Next I changed img onload to window on load, to no real change, 
+//finally changing the name of the image to have no capital letters did the trick.
+//Uncaught DOMException: Failed to execute 'drawImage' on 'CanvasRenderingContext2D': The HTMLImageElement 
+//provided is in the 'broken' state. at drawFrame,
+// and get image 404 are what the dev tools threw as errors etc.
 let player=1;
 // variables for moving
 let spriteY = 430;
