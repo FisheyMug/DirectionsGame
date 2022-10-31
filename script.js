@@ -10,13 +10,29 @@ img.src = "sprite.png";
 //provided is in the 'broken' state. at drawFrame,
 // and get image 404 are what the dev tools threw as errors etc.
 let player=1;
+
 // variables for moving
-let spriteY = 430;
-let spriteX = 305;
+let spriteY = 450;
+let spriteX = 308;
 let faceDirection = 0;
 let goal = 1;
 let round = 1;
 let speed = 100;
+
+//variables for movement positions
+const leftX=20;
+const leftBuildingMiddleX=175;
+const middleLeftX=308;
+const middleBuildingMiddleX=435;
+const middleRightX=565;
+const rightBuildingMiddleX=705;
+const rightX=860;
+
+const topY=15;
+const topBuildingMiddleY=120;
+const middleY=218;
+const bottomBuildingMiddleY=340;
+const bottomY=450;
 
 
 // variables for building coordinates
@@ -206,63 +222,63 @@ function borderDetection() {
 function reset() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (round==1) {
-        spriteY = 430;
-        spriteX = 305;
+        spriteY = bottomY;
+        spriteX = middleLeftX;
         faceDirection = 0;
         drawFrame (0, 1, spriteX, spriteY);
     } else if (round==2) {
-        spriteY = 223;
-        spriteX = 853;
+        spriteY = middleY;
+        spriteX = rightX;
         faceDirection = 3;
         drawFrame (0, 2, spriteX, spriteY)
     } else if (round == 3) {
-        spriteX = 301;
-        spriteY = 22;
+        spriteX = middleLeftX;
+        spriteY = topY;
         faceDirection= 2;
         drawFrame (0, 0, spriteX, spriteY)
     } else if (round==4) {
-        spriteX= 303;
-        spriteY=220
+        spriteX= middleLeftX;
+        spriteY=middleY
         faceDirection=0;
         drawFrame (0, 1, spriteX, spriteY);
     } else if (round==5) {
-        spriteX=853
-        spriteY=22
+        spriteX=rightX
+        spriteY=topY
         faceDirection = 3;
         drawFrame (0, 2, spriteX, spriteY)
     } else if (round == 6) {
-        spriteX=20
-        spriteY=20
+        spriteX=leftX
+        spriteY=topY
         faceDirection = 2;
         drawFrame (0, 0, spriteX, spriteY)
     } else if (round == 7) {
-        spriteX=557
-        spriteY=223
+        spriteX=middleRightX
+        spriteY=middleY
         faceDirection = 3;
         drawFrame (0, 2, spriteX, spriteY)
     } else if (round==8) {
-        spriteX=853
-        spriteY=430
+        spriteX=rightX
+        spriteY=bottomY
         faceDirection = 0;
         drawFrame (0, 1, spriteX, spriteY)
     } else if (round==9) {
-        spriteX=560
-        spriteY=430
+        spriteX=middleRightX
+        spriteY=bottomY
         faceDirection = 3;
         drawFrame (0, 2, spriteX, spriteY)
     } else if (round==10) {
-        spriteX=16
-        spriteY=430
+        spriteX=leftX
+        spriteY=bottomY
         faceDirection = 1;
         drawFrame (0, 3, spriteX, spriteY)
     } else if (round == 11) {
-        spriteX=560
-        spriteY=22
+        spriteX=middleRightX
+        spriteY=topY
         faceDirection = 3;
         drawFrame (0, 2, spriteX, spriteY)
     } else if (round == 12) {
-        spriteX=20
-        spriteY=224
+        spriteX=leftX
+        spriteY=middleY
         faceDirection = 1;
         drawFrame (0, 3, spriteX, spriteY)
     }
