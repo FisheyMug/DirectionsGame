@@ -123,9 +123,7 @@ function drawFrame (frameX, frameY, canvasX, canvasY) {
 }
 
 function move (direction) {
-    //variable speed
-    //if (faceDirection == 1 || faceDirection == 3) {
-      //  speed= 60;
+    
     //} else speed = 100;
     //straight
     //if (direction == straight) {
