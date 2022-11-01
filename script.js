@@ -13,9 +13,9 @@ let player=1;
 
 // variables for moving
 let spriteY = 450;
-let spriteX = 308;
+let spriteX = 565;
 let faceDirection = 0;
-let goal = 1;
+let goal = 3;
 let round = 1;
 let speed = 100;
 
@@ -124,28 +124,544 @@ function drawFrame (frameX, frameY, canvasX, canvasY) {
 
 function move (direction) {
     //variable speed
-    if (faceDirection == 1 || faceDirection == 3) {
-        speed= 60;
-    } else speed = 100;
+    //if (faceDirection == 1 || faceDirection == 3) {
+      //  speed= 60;
+    //} else speed = 100;
     //straight
-    if (direction == straight) {
-        if (faceDirection == 0) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawFrame (0, 1, spriteX, spriteY-=speed)
+    //if (direction == straight) {
+       // if (faceDirection == 0) {
+         //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+           // drawFrame (0, 1, spriteX, spriteY-=speed)
+        //}
+        //else if (faceDirection == 1) {
+         //  ctx.clearRect(0, 0, canvas.width, canvas.height);
+          //  drawFrame (0, 3, spriteX+= speed, spriteY) 
+        //}
+        //else if (faceDirection == 2) {
+         //   ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //drawFrame (0, 0, spriteX, spriteY+=speed)
+       // }
+        //else if (faceDirection == 3) {
+          //  ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //drawFrame (0, 2, spriteX-=speed, spriteY)
+       // }
+    //}    
+    if (direction== straight) {
+        if (spriteX==leftX) {
+            if (spriteY==topY) {
+                if (faceDirection==0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX= leftBuildingMiddleX;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY= topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY ==topBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=topY;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX+=50;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2){
+                    spriteY= middleY;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY == middleY) {
+                if (faceDirection==0) {
+                    spriteY=topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=leftBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=middleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if(faceDirection==1){
+                    spriteX+=50;
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomY) {
+                if (faceDirection==0) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=leftBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if(faceDirection==3) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            }
+        } else if (spriteX == leftBuildingMiddleX) {
+            if (spriteY == topY) {
+                if (faceDirection==0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleLeftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=leftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==middleY) {
+                if (faceDirection==0) {
+                    spriteY -=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleLeftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY +=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=leftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomY) {
+                if (faceDirection==0) {
+                    spriteY-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleLeftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=leftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            }
+        } else if (spriteX==middleLeftX) {
+            if (spriteY==topY) {
+                if (faceDirection==0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX= leftBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==topBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=topY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if(faceDirection==2) {
+                    spriteY=middleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==middleY) {
+                if (faceDirection==0) {
+                    spriteY=topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=leftBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=middleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomY) {
+                if (faceDirection==0) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=leftBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            }
+        } else if (spriteX==middleBuildingMiddleX) {
+            if (spriteY==topY) {
+                if (faceDirection==0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleRightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleLeftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==middleY) {
+                if (faceDirection==0) {
+                    spriteY-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=middleRightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if(faceDirection==2) {
+                    spriteY+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleLeftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomY) {
+                if (faceDirection==0) {
+                    spriteY-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if(faceDirection==1) {
+                    spriteX= middleRightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleLeftX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } 
+        } else if (spriteX == middleRightX) {
+            if (spriteY==topY) {
+                if (faceDirection==0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=rightBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==topBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=topY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=middleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==middleY) {
+                if (faceDirection==0) {
+                    spriteY=topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=rightBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=middleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX -=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomY) {
+                if (faceDirection==0) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=rightBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            }
+        } else if (spriteX==rightBuildingMiddleX) {
+            if (spriteY==topY) {
+                if (faceDirection==0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=rightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleRightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==middleY) {
+                if (faceDirection==0) {
+                    spriteY-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX=rightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY+=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleRightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomY) {
+                if (faceDirection==0) {
+                    spriteY-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    spriteX= rightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=middleRightX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            }
+        } else if (spriteX==rightX) {
+            if (spriteY==topY) {
+                if (faceDirection==0) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=rightBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==topBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=topY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=middleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                } 
+            } else if (spriteY==middleY) {
+                if (faceDirection==0) {
+                    spriteY=topBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=rightBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomBuildingMiddleY) {
+                if (faceDirection==0) {
+                    spriteY=middleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    spriteY=bottomY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX-=50
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            } else if (spriteY==bottomY) {
+                if (faceDirection==0) {
+                    spriteY=bottomBuildingMiddleY
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 1, spriteX, spriteY);
+                } else if (faceDirection==1) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 3, spriteX, spriteY);
+                } else if (faceDirection==2) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 0, spriteX, spriteY);
+                } else if (faceDirection==3) {
+                    spriteX=rightBuildingMiddleX
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawFrame (0, 2, spriteX, spriteY);
+                }
+            }
         }
-        else if (faceDirection == 1) {
-           ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawFrame (0, 3, spriteX+= speed, spriteY) 
-        }
-        else if (faceDirection == 2) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawFrame (0, 0, spriteX, spriteY+=speed)
-        }
-        else if (faceDirection == 3) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawFrame (0, 2, spriteX-=speed, spriteY)
-        }
-    }    
+    }
+
 
     //right
     if (direction ==right) {
@@ -194,30 +710,11 @@ function move (direction) {
         drawFrame (0, 0, spriteX, spriteY);
         }
     }
-    borderDetection()
     buildingDetection();
     sentance();
 };
 
-//collision detection/ border edge reset
-function borderDetection() {
-    if (spriteX <= 0) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 2, spriteX=25, spriteY)
-    }
-    if (spriteX >= canvas.width) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 3, spriteX=canvas.width-50, spriteY)
-    }
-    if (spriteY <= 0) {
-       ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 1, spriteX, spriteY= 25)
-    }
-    if (spriteY >= canvas.height) {
-       ctx.clearRect(0, 0, canvas.width, canvas.height)
-        drawFrame (0, 0, spriteX, spriteY=460) 
-    }
-};
+
 
 function reset() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
