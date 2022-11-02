@@ -15,7 +15,7 @@ let player=1;
 let spriteY = 450;
 let spriteX = 565;
 let faceDirection = 0;
-let goal = 3;
+let goal = 1;
 let round = 1;
 let speed = 100;
 
