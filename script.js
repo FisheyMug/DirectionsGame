@@ -123,27 +123,7 @@ function drawFrame (frameX, frameY, canvasX, canvasY) {
 }
 
 function move (direction) {
-    
-    //} else speed = 100;
-    //straight
-    //if (direction == straight) {
-       // if (faceDirection == 0) {
-         //   ctx.clearRect(0, 0, canvas.width, canvas.height);
-           // drawFrame (0, 1, spriteX, spriteY-=speed)
-        //}
-        //else if (faceDirection == 1) {
-         //  ctx.clearRect(0, 0, canvas.width, canvas.height);
-          //  drawFrame (0, 3, spriteX+= speed, spriteY) 
-        //}
-        //else if (faceDirection == 2) {
-         //   ctx.clearRect(0, 0, canvas.width, canvas.height);
-        //drawFrame (0, 0, spriteX, spriteY+=speed)
-       // }
-        //else if (faceDirection == 3) {
-          //  ctx.clearRect(0, 0, canvas.width, canvas.height);
-        //drawFrame (0, 2, spriteX-=speed, spriteY)
-       // }
-    //}    
+    //Straight
     if (direction== straight) {
         if (spriteX==leftX) {
             if (spriteY==topY) {
@@ -964,6 +944,9 @@ function drawStar(cx,cy,spikes,outerRadius,innerRadius){
         goal = 1
     };
     drawStar(447,270,5,250,125);
+    ctx.font="75px Times New Roman"
+    ctx.fillStyle="black"
+    ctx.fillText("You did it!", 290, 260)
     setTimeout(()=>{reset()},3000)
     player=1;
   }
